@@ -6,11 +6,13 @@ Setup
 -----
 
 Dependencies:
-1.  Python, Flask, SleekXMPP
+
+1.  Python, Flask, Jinja2, Werkzeug, SleekXMPP
 2.  MongoDB, pymongo
 3.  Your Favorite Web Server
 
 Setting Up the Software:
+
 1.  Create a gmail account dedicated to this bot.
 2.  Invite the bot to the partychat.
 3.  Log onto the gmail account and accept partychat invitation.
