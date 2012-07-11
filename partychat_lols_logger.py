@@ -13,6 +13,7 @@ from PIL import Image
 import sleekxmpp
 from gridfs import GridFS
 from connect_mongo import connect_db
+import pymongo
 
 PARTYCHAT_ROOM = environ["PARTYCHAT_ROOM"]
 GMAIL_USERNAME = environ["GMAIL_USERNAME"]
@@ -30,7 +31,10 @@ tag_regex = re.compile(r'(?:^|\s)#(\w+)')
 
 db = connect_db().message
 fs = connect_db()
+fs["thumbnail.chunks"].ensure_index([("files_id", 1), ("n", 1)])
+
 fs = GridFS(fs, "thumbnail")
+
 
 class LolBot(sleekxmpp.ClientXMPP):
 

@@ -7,8 +7,8 @@ Setup
 
 Dependencies:
 
-1. Python, Flask, Jinja2, Werkzeug, SleekXMPP
-2. MongoDB, pymongo
+1. Python, Flask, Jinja2, Werkzeug, SleekXMPP, pymongo
+2. Phantom.js, PIL (thumbnail generation)
 3. Heroku Account
 4. MongoHQ Account
 
@@ -17,9 +17,9 @@ Setting Up the Software:
 1. Create a gmail account dedicated to this bot.
 2. Invite the bot to the partychat.
 3. Log onto the gmail account and accept partychat invitation.
-4. Configure the software with the username/password of the gmail account as well, name of the partychat room, and credentials to the MongoHQ database.
+4. Configure the software with the username/password of the gmail account, name of the partychat room, and credentials to the MongoHQ database.
 5. Start the logger script.
-6. Push the site to heroku.
+6. Create and push the site to heroku.
 7. Have some lols.
 
 Todo
