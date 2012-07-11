@@ -7,9 +7,9 @@ from os import environ
 import re
 from datetime import datetime
 from subprocess import call
+import random
+
 from PIL import Image
-
-
 import sleekxmpp
 from gridfs import GridFS
 from connect_mongo import connect_db
@@ -88,14 +88,18 @@ class LolBot(sleekxmpp.ClientXMPP):
 
                         # If just a url, then render a thumbnail and resize it
                         else:
-                            call("phantomjs rasterize.js '%s' tempthumb.png" % (url), shell=True)
-                            img = Image.open("tempthumb.png")
+                            random_filename = '/tmp/'
+                            for i in range(20):
+                                random_filename += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+                            random_filename += ".png"
+                            call("phantomjs rasterize.js '%s' %s" % (url, random_filename), shell=True)
+                            img = Image.open(random_filename)
                             # http://stackoverflow.com/questions/7648200/pip-install-pil-e-tickets-1-no-jpeg-png-support
                             img = img.resize((320, 250), Image.BICUBIC)
-                            img.save("tempthumb.png")
+                            img.save(random_filename)
 
                             # Upload it to Mongo
-                            img_id = fs.put(open("tempthumb.png"))
+                            img_id = fs.put(open(random_filename))
                             urls.append(url)
                             url_thumbs.append(img_id)
 
