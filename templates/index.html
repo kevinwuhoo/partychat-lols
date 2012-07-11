@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+{% for i in range(0,15,3) %}
+<div class="row">
+
+	{% for j in range(3) %}
+
+    {% if items_len > i+j %}
+	{% set item = items[i+j] %}
+
+	<div class="span4 item">
+		<div class="box">
+			{% if "url_thumbs" in item %}
+			<a href="{{item["urls"][0]}}"><img src="/thumb/{{item["url_thumbs"][0]}}" class="thumb" /></a>
+			<!-- <img src="/thumb/{{item["url_thumbs"][0]}}" class="thumb" /> -->
+			{% else %}
+			<a href="{{item["imgs"][0]}}"><img src="{{item["imgs"][0]}}" class="thumb" /></a>
+			{% endif %}
+			<div class="row caption">
+				{{item["user"]}}
+
+				{% if "tags" in item %}
+				<span class="tags">{{item["tags"]}}</span>
+				{% endif %}
+			</div>
+
+		</div>
+	</div>
+	{% endif %}
+
+	{% endfor %}
+</div>
+
+{% endfor %}
+{% endblock %}
